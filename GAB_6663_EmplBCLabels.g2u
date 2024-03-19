@@ -1,0 +1,283 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(BaseForm)
+Gui.Form..Caption("Employee Barcode Labels")
+Gui.Form..Size(258,272)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(False)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(False)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.lbl1.Create(Label,"Enter the number of copies for each label",True,198,13,0,13,17,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl1.BorderStyle(0)
+Gui.Form.txtCopies.Create(TextBox,"1",True,20,20,0,13,31,True,0,"Tahoma",8.25,,1)
+Gui.Form.txtCopies.MaxLength(1)
+Gui.Form.txtCopies.NumericOnly(2)
+Gui.Form.txtCopies.DefaultValue("1")
+Gui.Form.txtCopies.TabStop(True)
+Gui.Form.txtCopies.TabIndex(10)
+Gui.Form.lbl2.Create(Label,"Select Employee Type",True,105,13,0,13,72,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl2.BorderStyle(0)
+Gui.Form.chkHourly.Create(CheckBox)
+Gui.Form.chkHourly.Enabled(True)
+Gui.Form.chkHourly.Visible(True)
+Gui.Form.chkHourly.Zorder(0)
+Gui.Form.chkHourly.Size(75,20)
+Gui.Form.chkHourly.Position(13,86)
+Gui.Form.chkHourly.Caption("Hourly")
+Gui.Form.chkHourly.FontName("Tahoma")
+Gui.Form.chkHourly.FontSize(8.25)
+Gui.Form.chkHourly.Value(1)
+Gui.Form.chkHourly.DefaultValue(1)
+Gui.Form.chkHourly.TabStop(True)
+Gui.Form.chkHourly.TabIndex(20)
+Gui.Form.chkSalary.Create(CheckBox)
+Gui.Form.chkSalary.Enabled(True)
+Gui.Form.chkSalary.Visible(True)
+Gui.Form.chkSalary.Zorder(0)
+Gui.Form.chkSalary.Size(75,20)
+Gui.Form.chkSalary.Position(13,107)
+Gui.Form.chkSalary.Caption("Salary")
+Gui.Form.chkSalary.FontName("Tahoma")
+Gui.Form.chkSalary.FontSize(8.25)
+Gui.Form.chkSalary.TabStop(True)
+Gui.Form.chkSalary.TabIndex(30)
+Gui.Form.lbl3.Create(Label,"Beginning Employee #",True,106,13,0,13,146,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl3.BorderStyle(0)
+Gui.Form.txtEmplStart.Create(TextBox,"00000",True,45,20,0,13,160,True,0,"Tahoma",8.25,,1)
+Gui.Form.txtEmplStart.MaxLength(5)
+Gui.Form.txtEmplStart.DefaultValue("00000")
+Gui.Form.txtEmplStart.TabStop(True)
+Gui.Form.txtEmplStart.TabIndex(40)
+Gui.Form.lbl4.Create(Label,"Ending Employee #",True,92,13,0,148,146,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl4.BorderStyle(0)
+Gui.Form.txtEmplEnd.Create(TextBox,"99999",True,45,20,0,148,160,True,0,"Tahoma",8.25,,1)
+Gui.Form.txtEmplEnd.MaxLength(5)
+Gui.Form.txtEmplEnd.DefaultValue("99999")
+Gui.Form.txtEmplEnd.TabStop(True)
+Gui.Form.txtEmplEnd.TabIndex(60)
+Gui.Form.cmdPrint.Create(Button)
+Gui.Form.cmdPrint.Enabled(True)
+Gui.Form.cmdPrint.Visible(True)
+Gui.Form.cmdPrint.Zorder(0)
+Gui.Form.cmdPrint.Size(75,23)
+Gui.Form.cmdPrint.Position(13,203)
+Gui.Form.cmdPrint.Caption("Print")
+Gui.Form.cmdPrint.FontName("Tahoma")
+Gui.Form.cmdPrint.FontSize(8.25)
+Gui.Form.cmdPrint.SvgPicture("icon_printer_color")
+Gui.Form.cmdPrint.Event(Click,cmdPrint_Click)
+Gui.Form.cmdPrint.DisableOnClick(10)
+Gui.Form.cmdPrint.TabStop(True)
+Gui.Form.cmdPrint.TabIndex(80)
+Gui.Form.cmdEmplStart.Create(Button)
+Gui.Form.cmdEmplStart.Enabled(True)
+Gui.Form.cmdEmplStart.Visible(True)
+Gui.Form.cmdEmplStart.Zorder(0)
+Gui.Form.cmdEmplStart.Size(23,23)
+Gui.Form.cmdEmplStart.Position(61,160)
+Gui.Form.cmdEmplStart.Caption("")
+Gui.Form.cmdEmplStart.FontName("Tahoma")
+Gui.Form.cmdEmplStart.FontSize(8.25)
+Gui.Form.cmdEmplStart.SvgPicture("icon_browser_color")
+Gui.Form.cmdEmplStart.Event(Click,cmdEmplSearch_Click)
+Gui.Form.cmdEmplStart.TabStop(True)
+Gui.Form.cmdEmplStart.TabIndex(50)
+Gui.Form.cmdEmplEnd.Create(Button)
+Gui.Form.cmdEmplEnd.Enabled(True)
+Gui.Form.cmdEmplEnd.Visible(True)
+Gui.Form.cmdEmplEnd.Zorder(0)
+Gui.Form.cmdEmplEnd.Size(23,23)
+Gui.Form.cmdEmplEnd.Position(196,160)
+Gui.Form.cmdEmplEnd.Caption("")
+Gui.Form.cmdEmplEnd.FontName("Tahoma")
+Gui.Form.cmdEmplEnd.FontSize(8.25)
+Gui.Form.cmdEmplEnd.SvgPicture("icon_browser_color")
+Gui.Form.cmdEmplEnd.Event(Click,cmdEmplSearch_Click)
+Gui.Form.cmdEmplEnd.TabStop(True)
+Gui.Form.cmdEmplEnd.TabIndex(70)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+'by Josh Withrow
+'because people want it.
+
+F.ODBC.Connection!con.OpenCompanyConnection
+
+Gui.Form..Show
+Gui.Form.txtCopies.SetFocus
+
+Program.Sub.Main.End
+
+Program.Sub.Form_UnLoad.Start
+F.Intrinsic.Control.If(V.ODBC.con!.State,=,1)
+	F.ODBC.Connection!con.Close
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.End
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Catching.Start
+	V.Local.sError.Declare
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}",V.Caller.ScriptFile,V.Ambient.NewLine,v.Args.sub,V.Args.errorno,V.args.errordesc,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError,"Unhandled Exception")
+	'F.Intrinsic.Control.End
+	'I don't want to end the program... I just want to tell the user that they made me puke.
+Program.Sub.Catching.End
+
+Program.Sub.cmdPrint_Click.Start
+F.Intrinsic.Control.Try
+
+V.Local..BulkDeclareString(sSQL,sReportPath,sAltReportPath,sMsg)
+V.Local..BulkDeclareLong(iBIRunID,iBILogID,iBIRptID)
+V.Local..BulkDeclareBoolean(bExists)
+
+'Report Details...
+F.Intrinsic.String.Concat(V.Caller.BusintDir,"\Labels\Custom\GAB_6663_EmplBarcodeLabel_Codesoft.lab",V.Local.sReportPath)
+F.Intrinsic.File.Exists(V.Local.sReportPath,V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	F.Global.BI.InitializeReport("Employee Barcode Label Codesoft (6663)",V.Local.sReportPath,V.Local.iBIRptID)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Please ensure that the label template exists.{0}{0}{1}",V.Ambient.NewLine,V.Local.sReportPath,V.Local.sMsg)
+	F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Label Template Not Found")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Validate Number of Copies
+F.Intrinsic.Control.If(V.Screen.Form!txtCopies.Text,<=,0)
+	F.Intrinsic.UI.Msgbox("Please make sure that number of copies for each label is 1 or more.","Check Number of Copies...")
+F.Intrinsic.Control.EndIf
+
+'Validate that Pay Type is selected...
+'If everything is good, V.Args.PayTypeString is returned.  If the returned arg doesn't exist, then an error was encountered or something else is very wrong.s
+F.Intrinsic.Control.CallSub(GetPayTypeString)
+F.Intrinsic.Variable.ArgExists(PayTypeString,V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Set SQL statement that will load the DataTable which we will use to print the labels...
+F.Intrinsic.String.Build("select a.EMPLOYEE, a.NAME, a.SHIFT, a.DEPT_EMPLOYEE, b.DEPT_NAME, a.COMMENTS_1 EMPL_IMAGE, '{3}' GSS_PATH from v_employee_mstr a left outer join v_departments b on a.DEPT_EMPLOYEE=b.DEPT_ID where a.PAY_TYPE IN ({0}) and (a.EMPLOYEE>='{1}' and a.EMPLOYEE<='{2}') order by a.employee, a.name, a.shift, a.dept_employee",V.Args.PayTypeString,V.Screen.Form!txtEmplStart.Text,V.Screen.Form!txtEmplEnd.Text,V.Caller.GlobalDir,V.Local.sSQL)
+F.Data.DataTable.CreateFromSQL("dtData","con",V.Local.sSQL)
+F.Data.DataTable.AddColumn("dtData","LABEL_COPIES",Long)
+F.Data.DataTable.SetValue("dtData",-1,"LABEL_COPIES",V.Screen.Form!txtCopies.Text)
+
+'Getting Run ID...
+F.Global.BI.GetRunID(V.Local.iBIRunID)
+'Getting Log ID, start logging...
+F.Global.BI.StartLogging(V.Local.iBIRunID,V.Local.iBIRptID,-1,"",V.Local.iBILogID)
+
+F.Intrinsic.Control.If(V.DataTable.dtData.RowCount--,<>,-1)
+    'Printing Codesoft label
+    F.Global.BI.PrintCodesoftLabelFromDataTable(V.Local.iBIRunID,V.Local.iBILogID,"dtData","",True)
+    'Stopping Logging
+	F.Global.BI.StopLogging(V.Local.iBILogID)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("No employee records found.","Notice")
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Catching,"Sub",V.Ambient.CurrentSubroutine,"ErrorNo",V.Ambient.ErrorNumber,"ErrorDesc",V.Ambient.ErrorDescription) 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdPrint_Click.End
+
+Program.Sub.cmdEmplSearch_Click.Start
+F.Intrinsic.Control.Try
+
+V.Local..BulkDeclareString(sSql,sTitles,sWidths,sRet,sMsg)
+V.Local..BulkDeclareBoolean(bExists)
+
+'Validate that Pay Type is selected...
+'If everything is good, V.Args.PayTypeString is returned.  If the returned arg doesn't exist, then an error was encountered or something else is very wrong. 
+F.Intrinsic.Control.CallSub(GetPayTypeString)
+F.Intrinsic.Variable.ArgExists(PayTypeString,V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Set SQL statement used to load the browser.
+F.Intrinsic.String.Build("select EMPLOYEE, NAME, PAY_TYPE, SHIFT, DEPT_EMPLOYEE from v_employee_mstr where PAY_TYPE IN ({0}) order by employee, name, shift, dept_employee",V.Args.PayTypeString,V.Local.sSQL)
+
+'Browser properties...
+V.Local.sTitles.Set("Employee*!*Name*!*Pay Type*!*Shift*!*Dept")
+V.Local.sWidths.Set("500*!*1500*!*500*!*500*!*750")
+
+'GIT'R'DUN!
+F.Intrinsic.String.Split(V.Local.sTitles,"*!*",V.Local.sTitles)
+F.Intrinsic.String.Split(V.Local.sWidths,"*!*",V.Local.sWidths)
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser("Select Employee","con",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,9000,8000,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	
+	'Using this same Sub to process both Starting and Ending Employee Number browsers...
+	F.Intrinsic.Control.SelectCase(V.Args.ControlName.UCase)
+		F.Intrinsic.Control.Case("CMDEMPLSTART")
+			Gui.Form.txtEmplStart.Text(V.Local.sRet(0))
+			Gui.Form.txtEmplEnd.Text(V.Local.sRet(0))
+		F.Intrinsic.Control.Case("CMDEMPLEND")
+			Gui.Form.txtEmplEnd.Text(V.Local.sRet(0))
+		F.Intrinsic.Control.CaseElse
+			'wtf...  HOW?!
+			F.Intrinsic.String.Build("*Achievement Unlocked*{0} u BrOkE iT (◐▂◑)",V.Ambient.NewLine,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"I am a teapot...")
+	F.Intrinsic.Control.EndSelect
+	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Catching,"Sub",V.Ambient.CurrentSubroutine,"ErrorNo",V.Ambient.ErrorNumber,"ErrorDesc",V.Ambient.ErrorDescription) 
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdEmplSearch_Click.End
+
+Program.Sub.GetPayTypeString.Start
+F.Intrinsic.Control.Try
+
+V.Local..BulkDeclareString(sPayType)
+
+'Checking to make sure that at least one of the Pay Type checkboxes is checked, and building a return argument to pass back to caller...
+F.Intrinsic.Control.If(V.Screen.Form!chkHourly.Checked,=,1)
+	V.Local.sPayType.Append("'H'")
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.If(V.Screen.Form!chkSalary.Checked,=,1)
+	F.Intrinsic.Control.If(V.Local.sPayType.Length,>,0)
+		V.Local.sPayType.Append(",")
+	F.Intrinsic.Control.EndIf
+	V.Local.sPayType.Append("'S'")
+F.Intrinsic.Control.EndIf
+
+'No Pay Type string constructed?  Let's complain about it and then do nothing.
+F.Intrinsic.Control.If(V.Local.sPayType.Length.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please select at least one Pay Type.","Select A Pay Type")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'If we made it here, the user correctly selected a Pay Type
+F.Intrinsic.Variable.AddRV("PayTypeString",V.Local.sPayType)
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Catching,"Sub",V.Ambient.CurrentSubroutine,"ErrorNo",V.Ambient.ErrorNumber,"ErrorDesc",V.Ambient.ErrorDescription) 
+F.Intrinsic.Control.EndTry
+Program.Sub.GetPayTypeString.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8615.24403$}$1
+${$6$}$jwithrow$}$20230817145117866$}$D95tSYIikIvF+oq+s87EtBQePACEH+Ey8W86sZvBxWB2FnxM6dfsKgaAlCU+rmyacjme/L3BX3Fko9ugREReFg==
+Program.Sub.Comments.End
